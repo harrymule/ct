@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "project_name": "Project 1",
+        "description": "this is a description",
+        "budget": "450000 ",
+        "project_manager": "harry mule",
+        "customer": "company A",
+        "status": "open",
+        "users": [
+            "harry",
+            "kelvin",
+            "robert",
+            "ken"
+        ]
+    },
+    {
+        "id": 2,
+        "project_name": "Project 2",
+        "description": "this is a description",
+        "budget": "450000 ",
+        "project_manager": " mle",
+        "customer": "company b",
+        "status": "open",
+        "users": [
+            "harry",
+            "kelvin",
+            "robert",
+            "ken"
+        ]
+    },
+    {
+        "id": 3,
+        "project_name": "Project 3",
+        "description": "this is a description",
+        "budget": "450000 ",
+        "project_manager": "harry ",
+        "customer": "company C",
+        "status": "open",
+        "users": [
+            "harry",
+            "kelvin",
+            "robert",
+            "ken"
+        ]
+    },
+    {
+        "id": 4,
+        "project_name": "Project 4",
+        "description": "this is a description",
+        "budget": "450000 ",
+        "project_manager": "kelvin",
+        "customer": "company D",
+        "status": "open",
+        "users": [
+            "harry",
+            "kelvin",
+            "robert",
+            "ken"
+        ]
+    },
+    {
+        "id": 5,
+        "project_name": "Project 5",
+        "description": "this is a description",
+        "budget": "450000 ",
+        "project_manager": "kinja",
+        "customer": "company A",
+        "status": "open",
+        "users": [
+            "harry",
+            "kelvin",
+            "robert",
+            "ken"
+        ]
+    }
+]

@@ -1,0 +1,182 @@
+<!-- BEGIN MAIN CONTENT -->
+<!-- {{ user_info | json}} -->
+
+<div class="row">
+        <div class="col-md-4">
+            <!-- BEGIN: ACCORDION DEMO -->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="icon-settings font-green-sharp"></i>
+                        <span class="caption-subject bold uppercase">Users</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-bind="tooltip" data-original-title="Add user" href="#"
+                            data-target="#userFormModal" data-toggle="modal" ng-click="user_form(0)">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default" ng-click="toggle_search()" href="#">
+                            <i class="icon-magnifier"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div ng-show="show_search" class="form-group form-md-line-input has-success">
+                        <div class="input-icon right">
+                            <input type="text" class="form-control" id="searchusers" ng-model="searchusers" placeholder="Search...">
+                            <label for="form_control_1"></label>
+                            <i class="icon-magnifier"></i>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a href="#/users/{{row.id}}" ng-click="select_user(row)" ng-repeat="row in users|filter:searchusers" class="list-group-item {{row.id == user.user_name ? 'active' : null}}">
+                            {{row.user_name}}
+                            <small class="pull-right">{{row.id}}</small>
+                        </a>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+    
+    
+          
+            <!-- BEGIN: ACCORDION DEMO -->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="icon-settings font-green-sharp"></i>
+                        <span class="caption-subject bold uppercase">{{user.user_name}}</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-bind="tooltip" data-original-title="Edit" href="#" data-target="#userFormModal"
+                            data-toggle="modal" ng-click="user_form(user.)">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-bind="tooltip" data-original-title="Edit" href="#" data-target="#userDeleteModal"
+                            data-toggle="modal">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <table class="table table-condensed">
+                                        <tr>
+                                            <th style="width: 20px">#</th>
+                                            <td>{{row.id}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class=""> User Name </th>
+                                            <td class="">{{row.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email</th>
+                                            <td>{{row.email}}</td>
+                                        </tr>
+                                        <tr>   
+
+                                            <th>Phone</th>
+                                            <td>{{row.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Role  </th>
+                                            <td>{{row.role}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Hourly Rate </th>
+                                            <td>{{row.rate}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Skills</th>
+                                            <td>{{row.skill}}</td>
+                                        </tr> 
+                                        
+                                  
+                                       
+                            </table>
+                        </div>
+                        <div class="col-sm-6">
+                                <table class="table table-condensed">
+                                        <div class="form-group form-md-line-input">
+                                                <label class="col-md-12 control-label" for="form_control_1"> Notes</label>
+                                                <div class="col-md-12">
+                                                    <textarea type="text" class="form-control" >{{row.notes}}  </textarea>
+                                                    <div class="form-control-focus"> </div>
+                                                </div>
+                                            </div>
+                                             
+                                            
+                                      
+                                           
+                                </table>
+                            </div>
+    
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN: ACCORDION DEMO -->
+    
+            <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-green-sharp">
+                            <i class="icon-settings font-green-sharp"></i>
+                            <span class="caption-subject bold uppercase">User Projects </span>
+                            <span class="caption-helper hide"></span>
+                        </div>
+                       
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                    <table class="table table-condensed">
+                                            <thead>
+                                                <th>#</th>                                             
+                                                <th>Project Name</th>                                                
+                                                <th>Start Date </th>
+                                                <th>Finish Date </th>
+                                             
+                                                <th>Priority</th>
+                                                <th>Status</th>
+                                            </thead>
+                                            <tbody>
+                                                    <tr ng-repeat="row in user_info.tasks">
+                                                            <td>{{row.id}}</td>
+                                                            <td class=" text-primary">{{row.project_name}}</td>
+                                                            <td>{{row.start_date}}</td>
+                                                            <td>{{row.end_date}}</td>
+                                                                                                                      
+                                                            <td>{{row.priority}}</td>
+                                                            <td>{{row.status}}</td>
+                                                           
+                                                            
+                                                        </tr>
+                                               
+                                                
+                                            </tbody>
+                                        </table>
+                            </div>
+    
+    
+    
+                        </div>
+                    </div>
+                </div>
+    
+        </div>
+    </div>
+    <!-- <div data-ng-include="'views/modals/user/user.html'"></div>
+    <div data-ng-include="'views/modals/user/delete.html'"></div> -->
+    <div data-ng-include="'views/modals/user/form.html'"></div> 
+    
+    
+    <!-- END MAIN CONTENT -->
+    <!-- BEGIN MAIN JS-->
+    <script>
+            Dashboard.init();
+        </script>
+    <!-- BEGIN MAIN JS -->

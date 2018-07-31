@@ -1,0 +1,192 @@
+<!-- BEGIN MAIN CONTENT -->
+<!-- {{ project_info | json}} -->
+
+<div class="row">
+        <div class="col-md-4">
+            <!-- BEGIN: ACCORDION DEMO -->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="icon-settings font-green-sharp"></i>
+                        <span class="caption-subject bold uppercase">Projects</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-bind="tooltip" data-original-title="Add Project" href="#"
+                            data-target="#projectFormModal" data-toggle="modal" ng-click="project_form(0)">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default" ng-click="toggle_search()" href="#">
+                            <i class="icon-magnifier"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div ng-show="show_search" class="form-group form-md-line-input has-success">
+                        <div class="input-icon right">
+                            <input type="text" class="form-control" id="searchProjects" ng-model="searchProjects" placeholder="Search...">
+                            <label for="form_control_1"></label>
+                            <i class="icon-magnifier"></i>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a href="#/projects/{{row.id}}" ng-click="select_project(row)" ng-repeat="row in projects|filter:searchProjects" class="list-group-item {{row.id == project.project_name ? 'active' : null}}">
+                            {{row.project_name}}
+                            <small class="pull-right">{{row.id}}</small>
+                        </a>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+    
+    
+          
+            <!-- BEGIN: ACCORDION DEMO -->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="icon-settings font-green-sharp"></i>
+                        <span class="caption-subject bold uppercase">{{project.project_name}}</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-bind="tooltip" data-original-title="Edit" href="#" data-target="#projectFormModal"
+                            data-toggle="modal" ng-click="project_form(project.)">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-bind="tooltip" data-original-title="Edit" href="#" data-target="#projectDeleteModal"
+                            data-toggle="modal">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-condensed">
+                                <tbody>
+                                    <tr ng-repeat="(key,value) in project">
+                                        <th>{{key}}</th>
+                                        <td ng-bind-html="value " ng-show="key!== 'users'"></td>
+                                        <td ng-hide="key!== 'users'">
+                                            <div ng-repeat="row in value">
+                                                <strong>{{'User ' + ($index+1)}}</strong> {{row}}
+                                            </div>
+                                        </td>
+    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN: ACCORDION DEMO -->
+    
+            <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-green-sharp">
+                            <i class="icon-settings font-green-sharp"></i>
+                            <span class="caption-subject bold uppercase">Project Information </span>
+                            <span class="caption-helper hide"></span>
+                        </div>
+                       
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul class="nav nav-tabs ">
+                                    <li class="active">
+                                        <a href="#" data-target="#tab_15_1_overview" data-toggle="tab"> Overview </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-target="#tab_15_2_dashboard" data-toggle="tab"> Dashboard </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#" data-target="#tab_15_4_files" data-toggle="tab"> Files </a>
+                                    </li>
+                                    <li >
+                                            <a href="#" data-target="#tab_15_1_reports" data-toggle="tab"> Reports </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-target="#tab_15_2_discuss" data-toggle="tab"> Discuss </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-target="#tab_15_3_issues" data-toggle="tab"> Issues </a>
+                                    </li>
+                                   
+                
+                                </ul>
+                            </div>
+    
+    
+                            <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_15_1_overview">
+                                        <div class="text-center hide">
+                                            <a href="#" class="btn green btn-outline btn-circle "> <i class="fa fa-plus"></i> Add Task</a>
+                                        </div>
+                                        <table class="table table-condensed">
+                                            <thead>
+                                                <th style="width: 20px">#</th>
+                                                <th class=""> % Complete </th>
+                                                <th>Task Name</th>
+                                                <th>Asigned</th>
+                                                <th>Start Date </th>
+                                                <th>Finish Date </th>
+                                                <th>Duration</th>
+                                            </thead>
+                                            <tbody>
+                                                    <tr ng-repeat="row in project_info.tasks">
+                                                            <td>{{row.id}}</td>
+                                                            <td class="text-center text-primary">{{row.percentage}}</td>
+                                                            <td>{{row.task_name}}</td>
+                                                            <td>{{row.assigned}}</td>
+                                                            <td>{{row.start_date}}</td>
+                                                            <td>{{row.end_date}}</td>
+                                                            <td>{{row.duration}}</td>
+                                                            
+                                                        </tr>
+                                               
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane" id="tab_15_2_dashboard">
+                                       <h1>dahsboards</h1>                                    
+                                    </div>
+                                    
+                                    <div class="tab-pane" id="tab_15_4_files">
+                                            <h1>Files</h1>
+                                    </div>
+                                    <div class="tab-pane" id="tab_15_1_reports">
+                                            <h1>reports</h1>
+                                    </div>
+                                    <div class="tab-pane" id="tab_15_2_discuss">
+                                            <h1>disscussions</h1>
+                                    </div>
+                                    <div class="tab-pane" id="tab_15_3_issues">
+                                            <h1>issues</h1>
+                                    </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+    
+        </div>
+    </div>
+    <!-- <div data-ng-include="'views/modals/project/project.html'"></div>
+    <div data-ng-include="'views/modals/project/delete.html'"></div> -->
+    <div data-ng-include="'views/modals/project/form.html'"></div> 
+    
+    
+    <!-- END MAIN CONTENT -->
+    <!-- BEGIN MAIN JS-->
+    <script>
+            Dashboard.init();
+        </script>
+    <!-- BEGIN MAIN JS -->
